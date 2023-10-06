@@ -1,0 +1,31 @@
+.footer-container {
+    background-color: black;
+    color: white;
+    padding: 40px;
+}
+
+.footer-details {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.footer-details p {
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    flex-flow: column;
+    margin: 0px 50px;
+    font-size: 30px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-copyright {
+    text-align: center;
+}

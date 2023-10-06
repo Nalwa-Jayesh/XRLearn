@@ -1,0 +1,41 @@
+.sidebar__container {
+    background-color: #ffffff;
+    margin: 1rem;
+    height: 76vh;
+    border-radius: 25px;
+    padding: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    align-items: center;
+}
+
+.sidebar__container > p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   font-size: 18px;
+}
+
+.sidebar__btn {
+    width: 100%;
+    border: none;
+    background-color: #ffffff;
+    font-family: 'Kanit', sans-serif;
+    color: rgb(24, 24, 118);
+    font-size: 18px;
+    padding: 1rem;
+    margin: 0.5rem 1rem;
+    &:hover {
+        background-color: aliceblue;
+        cursor: pointer;
+    }
+}
+
+.toggle_icon {
+    cursor: pointer;
+}
+
+.active-tab {
+    background-color: aliceblue;
+}
