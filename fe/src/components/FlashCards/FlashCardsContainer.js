@@ -18,7 +18,7 @@ const FlashCardsContainer = () => {
                             Authorization : user.accessToken
                         }
                     }
-					const response = await axios.get(`http://localhost:4040/api/cards/all`, config)
+					const response = await axios.get(`https://xrlearn.onrender.com/api/cards/all`, config)
 					const data = response.data
 					setCards(data.result)
 				}

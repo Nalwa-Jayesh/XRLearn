@@ -71,7 +71,7 @@ const NewNote = () => {
         };
       
         try {
-          const response = await axios.post("http://localhost:4040/api/usernotes/create", data, config);
+          const response = await axios.post("https://xrlearn.onrender.com/api/usernotes/create", data, config);
           console.log(response);
           alert("Note Added Successfully");
       

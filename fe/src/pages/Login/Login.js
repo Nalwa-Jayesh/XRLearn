@@ -14,7 +14,7 @@ const Login = () => {
 	async function LoginUser(e) {
 		try {
 			e.preventDefault()
-			const res = await axios.post("http://localhost:4040/api/user/login", {
+			const res = await axios.post("https://xrlearn.onrender.com/api/user/login", {
 			email,
 			password
 			})

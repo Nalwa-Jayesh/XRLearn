@@ -20,7 +20,7 @@ const Footer = () => {
       </div>
       <hr />
       <div className='footer-copyright'>
-        <h3>Copyright @ {new Date().getFullYear()} All Rights Reserved by LexiLearn</h3>
+        <h3>Copyright @ {new Date().getFullYear()} All Rights Reserved by XRLearn</h3>
       </div>
     </div>
   )

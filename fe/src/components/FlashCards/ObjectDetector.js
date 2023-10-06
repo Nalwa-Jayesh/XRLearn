@@ -43,7 +43,7 @@ const ObjectDetector = () => {
         },
       };
       const response = await axios.post(
-        'http://localhost:4040/api/cards/create',
+        'https://xrlearn.onrender.com/api/cards/create',
         data,
         config
       );

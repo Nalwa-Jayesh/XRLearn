@@ -13,7 +13,7 @@ const TextToSpeech = () => {
     // Make the API call to your backend
     console.log(text);
     axios
-  .post('http://localhost:4040/api/tts/speech', { text }, { responseType: 'blob' })
+  .post('https://xrlearn.onrender.com/api/tts/speech', { text }, { responseType: 'blob' })
   .then((response) => {
     // Create a URL for the blob data
     const audioUrl = URL.createObjectURL(response.data);

@@ -12,7 +12,7 @@ const Summary = () => {
 
   const handleSummary = async() => {
     try {
-      const res = await axios.post("http://localhost:4040/api/summary/summarize", {text})
+      const res = await axios.post("https://xrlearn.onrender.com/api/summary/summarize", {text})
     if (!res) {
       console.log("Error sending request")
     }

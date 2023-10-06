@@ -50,7 +50,7 @@ const SpeechToText = () => {
                 formData.append('file', audioBlob, 'audio.webm');
     
                 // Make an Axios POST request to your backend
-                const response = await axios.post('http://localhost:4040/api/stt/transcribe', formData, {
+                const response = await axios.post('https://xrlearn.onrender.com/api/stt/transcribe', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data', // Important for file uploads
                     },

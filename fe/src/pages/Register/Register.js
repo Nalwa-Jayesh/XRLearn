@@ -14,7 +14,7 @@ const Register = () => {
 	try{
 		e.preventDefault()
 		console.log(name, email, password)
-		const res = await axios.post("http://localhost:4040/api/user/register", {
+		const res = await axios.post("https://xrlearn.onrender.com/api/user/register", {
 			name,
 			email,
 			password
