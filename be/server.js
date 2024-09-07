@@ -11,7 +11,8 @@ const cardRoutes = require("./routes/cardRoutes");
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' })); // Increase this as needed
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 connectDB();
 
