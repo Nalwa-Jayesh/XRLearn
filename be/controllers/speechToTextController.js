@@ -1,49 +1,50 @@
-const multer = require('multer');
-const FormData = require('form-data');
-const { Readable } = require('stream');
-const axios = require('axios');
-const ffmpeg = require('fluent-ffmpeg');
-const ffmpegPath = require('ffmpeg-static');
+import axios from 'axios';
+import FormData from 'form-data';
+import { Readable } from 'stream';
 
 const bufferToStream = (buffer) => {
     return Readable.from(buffer);
-  };
+};
 
-  ffmpeg.setFfmpegPath(ffmpegPath);
-
-const speechToText = async(req,res) => {
+const speechToText = async (req, res) => {
     const audioFile = req.file;
 
-  if (!audioFile) {
-    res.status(400).json({ message: 'Audio file is required.' });
-    return;
-  }
+    if (!audioFile) {
+        res.status(400).json({ message: 'Audio file is required.' });
+        return;
+    }
 
-  try {
-    const audioStream = bufferToStream(audioFile.buffer);
+    try {
+        const audioStream = bufferToStream(audioFile.buffer);
 
-    const formData = new FormData();
-    formData.append('file', audioStream, { filename: 'audio.webm', contentType: 'audio/mpeg' });
-    formData.append('model', 'whisper-1');
-    formData.append('response_format', 'json');
-    const config = {
-      headers: {
-        "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-    };
+        // Create FormData and append the necessary data
+        const data = new FormData();
+        data.append('file', audioStream, { filename: 'audio.webm', contentType: 'audio/webm' });
+        data.append('model', 'whisper-1');
+        data.append('response_format', 'json');
 
-    const response = await axios.post('https://api.openai.com/v1/audio/transcriptions', formData, config);
-    const transcription = response.data.text;
+        // Set the configuration for the axios request
+        const options = {
+            method: 'POST',
+            url: 'https://whisper-speech-to-text1.p.rapidapi.com/speech-to-text',
+            headers: {
+                ...data.getHeaders(),
+                'x-rapidapi-key': '379c0edc45msh10f38b1d954267dp1137cfjsn7e7aad92235e',
+                'x-rapidapi-host': 'whisper-speech-to-text1.p.rapidapi.com',
+            },
+            data: data,
+        };
 
-    console.log('Transcription:', transcription);
-    res.json({ transcription });
-  } catch (error) {
-    console.error('API Error Response:', error.response ? error.response.data : error.message);
-    res.status(500).json({ error: 'Error transcribing audio' });
-  }
-}
+        // Make the request to the API
+        const response = await axios.request(options);
+        const transcription = response.data.text;
 
-module.exports = {
-    speechToText
-}
+        console.log('Transcription:', transcription);
+        res.json({ transcription });
+    } catch (error) {
+        console.error('API Error Response:', error.response ? error.response.data : error.message);
+        res.status(500).json({ error: 'Error transcribing audio' });
+    }
+};
+
+export default speechToText;
